@@ -9,14 +9,18 @@
 Get-ChildItem -Recurse -File | Where-Object { $_.Length -gt 95MB } | Select-Object Length, FullName
 ```
 
-3. 确认 `.gitignore` 已排除：
+3. 确认大文件会通过 Git LFS 上传，而不是作为普通 Git blob：
 
 - 根目录 AIMA 原书 PDF
-- `专业核心-人工智能（93）.zip`
 - 超过 100MB 的 `ppt/第10讲 不确定性的量化.pptx`
+- 其他 PDF/PPTX/DOC/DOCX/ZIP 资料
+
+4. 确认 `.gitignore` 已排除：
+
+- `专业核心-人工智能（93）.zip`
 - 实验生成的 `.exe`
 
-4. 如果要把 PDF/PPTX/DOCX 放进私有仓库，建议启用 Git LFS：
+5. 如果要把 PDF/PPTX/DOCX 放进私有仓库，建议启用 Git LFS：
 
 ```powershell
 git lfs install
@@ -52,4 +56,3 @@ git restore --staged <path>
 - 自己写的工具脚本
 
 教材、课件、试卷、同学笔记保留在本地或私有仓库。
-
